@@ -1,0 +1,100 @@
+﻿spring:
+  profiles:
+    active:
+      - dev
+---
+server:
+  port: 8001
+spring:
+  profiles: dev
+  application:
+    name: springcloud-config-dept-client
+  datasource:
+    username: root
+    password: 123
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    #    driver-class-name: com.p6spy.engine.spy.P6SpyDriver
+    type: com.alibaba.druid.pool.DruidDataSource
+    url: jdbc:mysql://localhost:3306/clouddb01?useSSL=false&useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true&serverTimezone=UTC
+    #    url: jdbc:p6spy:mysql://localhost:3306/clouddb01?useSSL=false&useUnicode=true&char
+    druid:
+      stat-view-servlet:
+        enabled: true
+        url-pattern: /druid/*
+        reset-enable: true
+        login-username: admin
+        login-password: 1
+        allow: 127.0.0.1
+      validation-query: SELECT 1
+      testWhileIdle: true
+#mybatis-plus
+mybatis-plus:
+  global-config:
+    banner: false
+  type-aliases-package: cn.lhx.springcloud.entities   #别名
+  configuration:
+    cache-enabled: true
+  mapper-locations: classpath:mapper/**/*.xml         #mapper映射文件
+
+eureka: #客户端注册进Eureka服务列表
+  client:
+    service-url:
+      #defaultZone: http://localhost:7001/eureka
+      defaultZone: http://eureka7001.com:7001/eureka/, http://eureka7002.com:7002/eureka/,http://eureka7003.com:7003/eureka/
+  instance:
+    instance-id: dept-8001.com
+    prefer-ip-address: true
+info:
+  app.name: ${spring.application.name}
+  company.name: 北京女子仁爱医院
+  company.url: www.saltlee.cn
+  build.artifactId: $project.artifactId$
+  build.version: $project.version$
+---
+server:
+  port: 8001
+spring:
+  profiles: test
+  application:
+    name: springcloud-config-dept-client
+  datasource:
+    username: root
+    password: 123
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    #    driver-class-name: com.p6spy.engine.spy.P6SpyDriver
+    type: com.alibaba.druid.pool.DruidDataSource
+    url: jdbc:mysql://localhost:3306/clouddb02?useSSL=false&useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true&serverTimezone=UTC
+    #    url: jdbc:p6spy:mysql://localhost:3306/clouddb01?useSSL=false&useUnicode=true&char
+    druid:
+      stat-view-servlet:
+        enabled: true
+        url-pattern: /druid/*
+        reset-enable: true
+        login-username: admin
+        login-password: 1
+        allow: 127.0.0.1
+      validation-query: SELECT 1
+      testWhileIdle: true
+#mybatis-plus
+mybatis-plus:
+  global-config:
+    banner: false
+  type-aliases-package: cn.lhx.springcloud.entities   #别名
+  configuration:
+    cache-enabled: true
+  mapper-locations: classpath:mapper/**/*.xml         #mapper映射文件
+  
+eureka: #客户端注册进Eureka服务列表
+  client:
+    service-url:
+      #defaultZone: http://localhost:7001/eureka
+      defaultZone: http://eureka7001.com:7001/eureka/, http://eureka7002.com:7002/eureka/,http://eureka7003.com:7003/eureka/
+  instance:
+    instance-id: dept-8001.com
+    prefer-ip-address: true
+info:
+  app.name: ${spring.application.name}
+  company.name: 北京女子仁爱医院
+  company.url: www.saltlee.cn
+  build.artifactId: $project.artifactId$
+  build.version: $project.version$
