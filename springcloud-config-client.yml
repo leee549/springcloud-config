@@ -7,7 +7,7 @@
 server:
   port: 3355
 spring:
-info: test2
+  info: test2
   profiles: dev
   application:
     name: springcloud-config-client
