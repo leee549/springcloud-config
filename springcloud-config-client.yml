@@ -1,5 +1,5 @@
-﻿spring:
- info: test1
+spring:
+  info: test1
   profiles:
     active: 
       - dev
