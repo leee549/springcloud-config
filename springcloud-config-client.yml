@@ -1,4 +1,5 @@
 ﻿spring:
+ info: test1
   profiles:
     active: 
       - dev
@@ -6,6 +7,7 @@
 server:
   port: 3355
 spring:
+info: test2
   profiles: dev
   application:
     name: springcloud-config-client
@@ -17,6 +19,7 @@ eureka:
 server:
   port: 3366
 spring:
+info: test3
   profiles: test
   application:
     name: springcloud-config-client
