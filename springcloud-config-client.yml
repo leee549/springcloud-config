@@ -1,8 +1,7 @@
 spring:
-  info: test1
   profiles:
     active: 
-      - dev
+      - test
 ---
 server:
   port: 3355
